@@ -170,6 +170,13 @@ static inline size_t vm_get_temp(vm_env *env)
     return env->temps_count++;
 }
 
+inline void vm_set_temp_value(vm_env *env, int pos, int n)
+{
+    vm_value v = {.type = INT};
+    v.value.vint = n;
+    env->temps[pos] = v;
+}
+
 static inline vm_value *vm_get_temp_value(vm_env *env, int id)
 {
     return &env->temps[id];
