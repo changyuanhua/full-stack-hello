@@ -48,15 +48,18 @@ check: $(EXEC) $(TEST_DONE)
 test: $(EXEC)
 	@python tests/runner.py
 
-TEMP ?= 20
+TEMP ?= 10
 FIB_ITERATIVE ?= ./tests/fib-iterative.s
 FIB_RECURSIVE ?= ./tests/fib-recursive.s
 FIB_TAILRECURSIVE ?= ./tests/fib-tailrecursive.s
+FIB_QMATRIX ?= ./tests/fib-qmatrix.s
+
 
 fib: $(EXEC)
 	@./$(EXEC) --input $(TEMP) $(FIB_ITERATIVE)
 	@./$(EXEC) --input $(TEMP) $(FIB_RECURSIVE)
 	@./$(EXEC) --input $(TEMP) $(FIB_TAILRECURSIVE)
+	@./$(EXEC) --input $(TEMP) $(FIB_QMATRIX)
 
 clean:
 	$(RM) $(EXEC) $(OBJS) $(deps) opcode.h
